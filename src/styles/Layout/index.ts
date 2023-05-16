@@ -1,13 +1,33 @@
-import { createStyles, em, getBreakpointValue } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 
-const landingStyle = createStyles((theme) => ({
-  header: {
-    backgroundColor: theme.colors.blue,
-
-    [`@media (min-width: ${em(getBreakpointValue(theme.breakpoints.md))})`]: {
-      backgroundColor: theme.colors.red,
-    },
+const layoutStyle = createStyles(() => ({
+  rootLayout: {
+    position: 'relative',
+    overflow: 'hidden',
+    background: ' linear-gradient(180deg, #FFFFFF 0%, #F2F9FF 100%)',
+  },
+  navbar: {
+    display: 'flex',
+    alignItems: 'center',
+    borderBottom: '0px',
+  },
+  innerNavbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0.5rem',
+  },
+  footer: {
+    display: 'flex',
+    alignItems: 'center',
+    borderBottom: '0px',
+  },
+  innerFooter: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0.5rem',
   },
 }));
 
-export default landingStyle;
+export default layoutStyle;
