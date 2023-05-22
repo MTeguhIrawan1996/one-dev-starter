@@ -9,7 +9,6 @@ const layoutStyle = createStyles(() => ({
   navbar: {
     display: 'flex',
     alignItems: 'center',
-    borderBottom: '0px',
   },
   innerNavbar: {
     display: 'flex',
