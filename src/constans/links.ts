@@ -8,6 +8,10 @@ const Links = [
     link: '/zustand',
   },
   {
+    title: 'Map',
+    link: '/map',
+  },
+  {
     title: 'Other',
     link: '/other',
   },
