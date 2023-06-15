@@ -12,6 +12,10 @@ const Links = [
     link: '/map',
   },
   {
+    title: 'Form Controller',
+    link: '/form',
+  },
+  {
     title: 'Other',
     link: '/other',
   },
