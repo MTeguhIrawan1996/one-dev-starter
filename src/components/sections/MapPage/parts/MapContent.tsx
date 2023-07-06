@@ -1,32 +1,67 @@
-import { Icon } from '@iconify/react';
 import { Box, Container } from '@mantine/core';
+import type { GeoJSONSource } from 'mapbox-gl';
 import maplibregl from 'maplibre-gl';
 import * as React from 'react';
+import type { MapRef } from 'react-map-gl';
 import Map, {
-  AttributionControl,
-  FullscreenControl,
-  Marker,
+  Layer,
   NavigationControl,
-  Popup,
   ScaleControl,
+  Source,
 } from 'react-map-gl';
 
+import {
+  clusterCountLayer,
+  clusterLayer,
+  unclusteredPointLayer,
+} from './layers';
+
 const MapContent = () => {
-  const [showPopup, setShowPopup] = React.useState(true);
-  const [viewport, setViewport] = React.useState({
-    longitude: 2.294694,
-    latitude: 48.858093,
-    zoom: 1,
-  });
+  // const [viewport, setViewport] = React.useState({
+  //   longitude: 2.294694,
+  //   latitude: 48.858093,
+  //   zoom: 1,
+  // });
+
+  const mapRef = React.useRef<MapRef>(null);
+
+  const onClick = (event) => {
+    const feature = event.features[0];
+    if (!feature) {
+      return;
+    }
+    const clusterId = feature.properties.cluster_id;
+
+    const mapboxSource = mapRef.current?.getSource(
+      'earthquakes'
+    ) as GeoJSONSource;
+
+    mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+      if (err) {
+        return;
+      }
+
+      mapRef.current?.easeTo({
+        center: feature?.geometry.coordinates,
+        zoom: zoom as number,
+        duration: 500,
+      });
+    });
+  };
+
   return (
-    <Box bg="blue" w="100%" px="md" className="innerYPaddings">
-      <Container size="xl" bg="yellow" className="paddings">
+    <Box bg="blue" w="100%" px="md" className="innerYPaddings" h="100vh">
+      <Container size="xl" bg="yellow" className="paddings" h="100%">
         <Map
-          {...viewport}
-          mapLib={maplibregl}
-          style={{ width: '100%', height: '100vh' }}
+          initialViewState={{
+            latitude: 40.67,
+            longitude: -103.59,
+            zoom: 2,
+          }}
+          style={{ width: '100%', height: '100%' }}
           maxZoom={17}
           minZoom={1}
+          cursor="auto"
           mapStyle={{
             version: 8,
             sources: {
@@ -48,35 +83,30 @@ const MapContent = () => {
               },
             ],
           }}
-          onMove={(evt) => setViewport(evt.viewState)}
+          mapLib={maplibregl}
+          interactiveLayerIds={[clusterLayer.id as string]}
+          onClick={onClick}
+          ref={mapRef}
         >
-          <Marker
-            longitude={2.294694}
-            latitude={48.858093}
-            anchor="top"
-            onClick={() => setShowPopup(true)}
-          >
-            <Icon
-              icon="tabler:map-pin-filled"
-              style={{ fontSize: '24px', color: 'red' }}
-            />
-          </Marker>
-          {showPopup && (
-            <Popup
-              longitude={2.294694}
-              latitude={48.858093}
-              anchor="bottom"
-              closeButton={true}
-              closeOnClick={false}
-              onClose={() => setShowPopup(false)}
-            >
-              Eiffel tower
-            </Popup>
-          )}
           <ScaleControl />
-          <NavigationControl />
-          <FullscreenControl />
-          <AttributionControl customAttribution="Map design by me" />
+          <NavigationControl
+            position="bottom-left"
+            showCompass={false}
+            style={{ borderRadius: '8px' }}
+          />
+          <Source
+            id="earthquakes"
+            type="geojson"
+            data="https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson"
+            cluster={true}
+            clusterMaxZoom={14}
+            clusterRadius={50}
+          >
+            <Layer {...clusterLayer} />
+            <Layer {...clusterCountLayer} />
+            <Layer {...unclusteredPointLayer} />
+          </Source>
+          <Box h={120} w={120} bg="red" pos="absolute"></Box>
         </Map>
       </Container>
     </Box>

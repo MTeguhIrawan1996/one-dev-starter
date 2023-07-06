@@ -14,5 +14,5 @@ const Map: NextPageWithLayout = () => {
 export default Map;
 
 Map.getLayout = function getLayout(page: React.ReactElement) {
-  return <LandingPageLayout>{page}</LandingPageLayout>;
+  return <LandingPageLayout page="map">{page}</LandingPageLayout>;
 };

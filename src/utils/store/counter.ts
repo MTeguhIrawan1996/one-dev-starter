@@ -16,6 +16,7 @@ const useCounter = create<countState>()(
       count: 0,
       username: 'M Teguh Irawan',
       foo: 'beard',
+      _hasHydrated: false,
       increase: () => set((state) => ({ count: state.count + 1 })),
       decrease: () =>
         set((state) => ({ count: state.count === 0 ? 0 : state.count - 1 })),
@@ -26,9 +27,10 @@ const useCounter = create<countState>()(
       partialize: (state) =>
         Object.fromEntries(
           Object.entries(state).filter(
-            ([key]) => !['username', 'foo'].includes(key)
+            ([key]) => !['username', 'foo', '_hasHydrated'].includes(key)
           )
         ),
+      skipHydration: true,
     }
   )
 );
