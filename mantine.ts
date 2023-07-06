@@ -1,13 +1,26 @@
 import { MantineProviderProps } from '@mantine/core';
 
 export const theme: MantineProviderProps['theme'] = {
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: 'Cooming soon, cursive',
   breakpoints: {
     xs: '36em',
     sm: '48em',
     md: '62em',
     lg: '75em',
     xl: '88em',
+  },
+  components: {
+    Container: {
+      defaultProps: {
+        sizes: {
+          xs: 540,
+          sm: 720,
+          md: 960,
+          lg: 1140,
+          xl: 1440,
+        },
+      },
+    },
   },
   fontSizes: {
     xs: '16px',
@@ -17,7 +30,6 @@ export const theme: MantineProviderProps['theme'] = {
   },
   headings: {
     // properties for all headings\
-    fontFamily: 'Inter, sans-serif',
     fontWeight: 400,
 
     // properties for individual headings, all of them are optional
@@ -30,7 +42,6 @@ export const theme: MantineProviderProps['theme'] = {
       h6: { fontSize: '24px' },
     },
   },
-
   colors: {
     brand: [
       '#F3F0FF',
@@ -46,4 +57,18 @@ export const theme: MantineProviderProps['theme'] = {
     ],
   },
   primaryColor: 'brand',
+
+  globalStyles: (theme) => ({
+    '.rootYPaddings': {
+      paddingBottom: '2rem',
+      paddingTop: '2rem',
+    },
+    '.innerYPaddings': {
+      paddingBottom: '0.5rem',
+      paddingTop: '0.5rem',
+    },
+    '.paddings': {
+      padding: theme.spacing.xs,
+    },
+  }),
 };

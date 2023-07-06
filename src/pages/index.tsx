@@ -1,15 +1,12 @@
-import { Box, Flex } from '@mantine/core';
-
 import LandingPageLayout from '@/components/layouts/landingPage';
+import { LandingPage } from '@/components/sections';
 
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
   return (
     <>
-      <Box>
-        <Flex h="150vh">Landing Page</Flex>
-      </Box>
+      <LandingPage />
     </>
   );
 };
