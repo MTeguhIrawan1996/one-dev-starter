@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { RealViewportProvider } from 'next-real-viewport';
 
 import '../styles/globals.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 import useScrollRestoration from '@/utils/hooks/detect-route/useScrollRestoration';
 import useTheme from '@/utils/hooks/useTheme';

@@ -1,5 +1,5 @@
 import LandingPageLayout from '@/components/layouts/landingPage';
-import LandingPage from '@/components/sections/LandingPage';
+import { LandingPage } from '@/components/sections';
 
 import { NextPageWithLayout } from './_app';
 

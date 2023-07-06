@@ -1,20 +1,15 @@
-import { Flex } from '@mantine/core';
 import * as React from 'react';
+
+import { RootWrapper } from '@/components/elements';
 
 import { Hero } from './parts';
 
 const LandingPage = () => {
   return (
-    <Flex
-      direction="column"
-      justify="center"
-      align="flex-start"
-      gap="xl"
-      className="rootYPaddings"
-    >
+    <RootWrapper>
       <Hero />
       <Hero />
-    </Flex>
+    </RootWrapper>
   );
 };
 
