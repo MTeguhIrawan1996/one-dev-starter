@@ -2,6 +2,7 @@ import { MantineProviderProps } from '@mantine/core';
 
 export const theme: MantineProviderProps['theme'] = {
   fontFamily: 'Cooming soon, cursive',
+  spacing: { xs: '12px', sm: '16px', md: '24px', lg: '32px', xl: '40px' },
   breakpoints: {
     xs: '36em',
     sm: '48em',
@@ -23,23 +24,25 @@ export const theme: MantineProviderProps['theme'] = {
     },
   },
   fontSizes: {
-    xs: '16px',
-    sm: '18px',
-    md: '20px',
-    lg: '23px',
+    xs: '12px',
+    sm: '14px',
+    md: '16px',
+    lg: '18px',
+    xl: '20px',
   },
   headings: {
     // properties for all headings\
+    // fontFamily: 'Inter, sans-serif',
     fontWeight: 400,
 
     // properties for individual headings, all of them are optional
     sizes: {
-      h1: { fontSize: '46px' },
-      h2: { fontSize: '41px' },
-      h3: { fontSize: '34px' },
-      h4: { fontSize: '32px' },
-      h5: { fontSize: '28px' },
-      h6: { fontSize: '24px' },
+      h1: { fontSize: '32px' },
+      h2: { fontSize: '28px' },
+      h3: { fontSize: '26px' },
+      h4: { fontSize: '24px' },
+      h5: { fontSize: '22px' },
+      h6: { fontSize: '16px' },
     },
   },
   colors: {

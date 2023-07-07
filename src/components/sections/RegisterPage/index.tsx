@@ -28,6 +28,7 @@ const RegisterPage = () => {
   const onSubmitForm = async (value: RegisterFormValue) => {
     // form.setFieldError('cpassword', 'No special characters allowed');
     // form.setErrors({ path: 'Error message', path2: 'Another error' });
+    // form.setErrors({ cpassword: 'Too short', password: 'Invalid email' });
     // eslint-disable-next-line no-console
     console.log(value);
   };

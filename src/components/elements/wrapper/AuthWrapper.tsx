@@ -7,7 +7,7 @@ interface IAuthWrapperProps {
 
 const AuthWrapper: React.FC<IAuthWrapperProps> = ({ children }) => {
   return (
-    <Flex h="100vh" justify="center" align="center">
+    <Flex justify="center" align="center" py="xl" mih="100vh">
       {children}
     </Flex>
   );
