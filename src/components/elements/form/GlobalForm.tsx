@@ -11,12 +11,14 @@ interface IGlobalFormProps {
   form: UseFormReturnType<any>;
   field: ControllerPropsTeguh[];
   onSubmitForm?: (values: any) => Promise<void>;
+  isLoading?: boolean;
 }
 
 const GlobalForm: React.FC<IGlobalFormProps> = ({
   form,
   field,
   onSubmitForm,
+  isLoading,
 }) => {
   return (
     <form onSubmit={form.onSubmit((val) => onSubmitForm?.(val))}>
@@ -46,7 +48,7 @@ const GlobalForm: React.FC<IGlobalFormProps> = ({
         ))}
       </Flex>
       <Group mt="xl" w="100%">
-        <Button type="submit" w="100%">
+        <Button type="submit" w="100%" loading={isLoading}>
           Submit
         </Button>
       </Group>

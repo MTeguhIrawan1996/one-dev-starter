@@ -3,7 +3,7 @@ import { ControllerPropsTeguh } from '@/types/global';
 const registerField: ControllerPropsTeguh[] = [
   {
     control: 'text-input',
-    name: 'name',
+    name: 'fullName',
     label: 'Nama Lengkap',
     withAsterisk: true,
   },

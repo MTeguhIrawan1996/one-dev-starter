@@ -10,3 +10,20 @@ export type ControllerPropsTeguh =
       React.RefAttributes<HTMLInputElement>)
   | ({ control: 'date-input' } & DatePickerInputProps &
       React.RefAttributes<HTMLInputElement>);
+
+export interface IExtensionKey {
+  extensions: {
+    code: string;
+    originalError: {
+      message: string;
+    };
+  };
+}
+export interface INotExtensionKey {
+  code: string;
+  originalError: {
+    message: string;
+  };
+}
+
+export type IExtensionGql = IExtensionKey & INotExtensionKey;

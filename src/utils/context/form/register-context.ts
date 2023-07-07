@@ -2,7 +2,7 @@
 import { createFormContext } from '@mantine/form';
 
 export interface RegisterFormValue {
-  name: string;
+  fullName: string;
   email: string;
   date: Date | string | null;
   password: string;
