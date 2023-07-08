@@ -1,7 +1,8 @@
 import { MantineProviderProps } from '@mantine/core';
 
 export const theme: MantineProviderProps['theme'] = {
-  fontFamily: 'Cooming soon, cursive',
+  // fontFamily: 'Cooming soon, cursive',
+  fontFamily: 'Inter, sans-serif',
   spacing: { xs: '12px', sm: '16px', md: '24px', lg: '32px', xl: '40px' },
   breakpoints: {
     xs: '36em',
