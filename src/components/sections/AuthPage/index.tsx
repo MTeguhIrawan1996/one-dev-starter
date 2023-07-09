@@ -1,11 +1,17 @@
 import * as React from 'react';
 
-const Auth = () => {
+import { AuthCard, AuthWrapper } from '@/components/elements';
+
+import { AuthBook } from './parts';
+
+const AuthPage = () => {
   return (
-    <div className="">
-      <div className="">Login Page</div>
-    </div>
+    <AuthWrapper>
+      <AuthCard titleCard="Login">
+        <AuthBook />
+      </AuthCard>
+    </AuthWrapper>
   );
 };
 
-export default Auth;
+export default AuthPage;

@@ -1,11 +1,9 @@
 import * as React from 'react';
 
+import { AuthPage } from '@/components/sections';
+
 const Auth = () => {
-  return (
-    <div className="">
-      <div className="">Login</div>
-    </div>
-  );
+  return <AuthPage />;
 };
 
 export default Auth;

@@ -1,7 +1,7 @@
 import { Container, Flex, Header } from '@mantine/core';
 import Link from 'next/link';
 
-import Links from '@/constans/links';
+import Links from '@/constans/Links/links';
 import layoutStyle from '@/styles/Layout';
 
 const Navbar = () => {

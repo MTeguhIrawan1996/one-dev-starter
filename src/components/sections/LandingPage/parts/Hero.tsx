@@ -5,7 +5,9 @@ import { InnerWrapper } from '@/components/elements';
 const Hero = () => {
   return (
     <InnerWrapper>
-      <Flex align="center">HERO</Flex>
+      <Flex align="center" h="100vh">
+        HERO
+      </Flex>
     </InnerWrapper>
   );
 };
