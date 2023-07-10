@@ -6,6 +6,7 @@ import { theme } from 'mantine';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { SessionProvider } from 'next-auth/react';
 import { RealViewportProvider } from 'next-real-viewport';
 
 import '../styles/globals.css';
@@ -70,22 +71,23 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ApolloProvider client={client}>
-        <RealViewportProvider>
-          <MantineProvider
-            withGlobalStyles
-            withNormalizeCSS
-            theme={{
-              ...theme,
-              colorScheme: state.value as DeepPartial<ColorScheme>,
-            }}
-          >
-            <Notifications position="top-right" notificationMaxHeight={400} />
-
-            <Component {...pageProps} />
-          </MantineProvider>
-        </RealViewportProvider>
-      </ApolloProvider>
+      <SessionProvider session={pageProps.session}>
+        <ApolloProvider client={client}>
+          <RealViewportProvider>
+            <MantineProvider
+              withGlobalStyles
+              withNormalizeCSS
+              theme={{
+                ...theme,
+                colorScheme: state.value as DeepPartial<ColorScheme>,
+              }}
+            >
+              <Notifications position="top-right" notificationMaxHeight={400} />
+              <Component {...pageProps} />
+            </MantineProvider>
+          </RealViewportProvider>
+        </ApolloProvider>
+      </SessionProvider>
     </>
   );
 }
